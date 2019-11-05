@@ -9,12 +9,8 @@ namespace SeleniumWebdriver.Tests
     public class Tests : TestBase
     {
         [Test]
-        public void SearchWithWrongReservationNumber()
+        public void SearchWithEmptyTextBox()
         {
-
-            #region TestData
-
-            #endregion
 
             var findButton = GetWebElementByXPath("//input[@class='bookbtn at-element-click-tracking']");
             findButton.Click();
