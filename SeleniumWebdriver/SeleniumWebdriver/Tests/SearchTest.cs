@@ -9,9 +9,8 @@ namespace SeleniumWebdriver.Tests
     public class Tests : TestBase
     {
         [Test]
-        public void SearchWithEmptyTextBox()
+        public void SearchWithEmptyBoxes()
         {
-
             var findButton = GetWebElementByXPath("//input[@class='bookbtn at-element-click-tracking']");
             findButton.Click();
 
@@ -21,28 +20,20 @@ namespace SeleniumWebdriver.Tests
         }
 
         [Test]
-        public void Calendar()
+        public void WorkWithCheckIn()
         {
 
-            #region TestData
+            var checkInButton = GetWebElementByXPath("//* [@class = 'spiceFare']");
+            checkInButton.Click();
 
-            #endregion
+            var ticketNumberBox = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ConfirmationNumber']");
+            ticketNumberBox.SendKeys("P52FKC");
 
-            var checkIn = GetWebElementByXPath("//* [@class = 'spiceFare']");
-            checkIn.Click();
+            var surnameBox = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_CONTACTEMAIL1']");
+            surnameBox.SendKeys("Sakun");
 
-            var ticketNumber = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ConfirmationNumber']");
-            ticketNumber.SendKeys("111");
-
-            var surname = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_CONTACTEMAIL1']");
-            surname.SendKeys("111");
-
-
-            var search = GetWebElementByXPath("//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_ButtonSubmit']");
-            search.Click();
-
-            var beginCheck = GetWebElementByXPath("//*[@input='CONTROLGROUPSEARCHWEBCHECKINVIEW$BookingRetrieveInputSearch1WebCheckinView$ButtonRetrieve']");
-            beginCheck.Click();
+            var searchButton = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ButtonRetrieve']");
+            searchButton.Click();
 
             var errorMessage = GetWebElementByXPath("//div[@id='errorSectionContent']");
             string error = errorMessage.Text;
