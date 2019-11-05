@@ -11,11 +11,6 @@ namespace SeleniumWebdriver.Tests
         [Test]
         public void SearchWithWrongReservationNumber()
         {
-
-            #region TestData
-
-            #endregion
-
             var findButton = GetWebElementByXPath("//input[@class='bookbtn at-element-click-tracking']");
             findButton.Click();
 
@@ -28,25 +23,17 @@ namespace SeleniumWebdriver.Tests
         public void Calendar()
         {
 
-            #region TestData
-
-            #endregion
-
             var checkIn = GetWebElementByXPath("//* [@class = 'spiceFare']");
             checkIn.Click();
 
             var ticketNumber = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ConfirmationNumber']");
-            ticketNumber.SendKeys("111");
+            ticketNumber.SendKeys("P52FKC");
 
             var surname = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_CONTACTEMAIL1']");
-            surname.SendKeys("111");
+            surname.SendKeys("Sakun");
 
-
-            var search = GetWebElementByXPath("//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_ButtonSubmit']");
+            var search = GetWebElementByXPath("//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ButtonRetrieve']");
             search.Click();
-
-            var beginCheck = GetWebElementByXPath("//*[@input='CONTROLGROUPSEARCHWEBCHECKINVIEW$BookingRetrieveInputSearch1WebCheckinView$ButtonRetrieve']");
-            beginCheck.Click();
 
             var errorMessage = GetWebElementByXPath("//div[@id='errorSectionContent']");
             string error = errorMessage.Text;
