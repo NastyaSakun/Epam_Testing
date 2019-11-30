@@ -10,10 +10,9 @@ namespace SeleniumWebdriver.Tests
         public IWebDriver webDriver;
 
         [SetUp]
-        public void OpenBrouserAndGoToTheTestSite()
+        public void OpenBrowserAndGoToTheTestSite()
         {
             webDriver = new ChromeDriver();
-            //webDriver.Manage().Window.Maximize();
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
             webDriver.Manage().Cookies.DeleteAllCookies();
             webDriver.Navigate().GoToUrl("https://book.spicejet.com/");
@@ -21,15 +20,10 @@ namespace SeleniumWebdriver.Tests
         }
 
         [TearDown]
-        public void CloseBrouser()
+        public void CloseBrowser()
         {
             webDriver.Quit();
         }
-
-        //protected IWebElement GetWebElementById(string Id)
-        //{
-        //    return webDriver.FindElement(By.CssSelector(Id));
-        //}
 
         protected IWebElement GetWebElementByXPath(string xPath)
         {
