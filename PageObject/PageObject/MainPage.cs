@@ -1,10 +1,10 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 
 namespace PageObject
 {
-    class MainPage
+    public class MainPage
     {
         private const string searchButtonXPath = "//input[@class='bookbtn at-element-click-tracking']";
         private const string errorMessageXPath = "//div[@id='view-origin-station']";
@@ -30,9 +30,9 @@ namespace PageObject
             return this;
         }
 
-        public bool GetErrorMessage()
+        public bool GetErrorMessageInMainPage()
         {
-            return (errorMessage.Text != null);
+            return errorMessage.Text;
         }
 
         public MainPage ClickCheckInButton()
@@ -42,3 +42,4 @@ namespace PageObject
         }
     }
 }
+
