@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 
-namespace PageObject
+namespace Framework_1
 {
     public class CheckInPage
     {
@@ -10,7 +10,7 @@ namespace PageObject
 
         private const string surnameXPath = "//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_CONTACTEMAIL1']";
 
-        private const string searchButtonXPath = "BookingRetrieveInputSearch1WebCheckinSearchView_ButtonRetrieve";
+        private const string searchButtonXPath = "//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ButtonRetrieve']";
 
         private const string errorMessageXPath = "//div[@id='errorSectionContent']";
 
@@ -20,7 +20,7 @@ namespace PageObject
         [FindsBy(How = How.XPath, Using = surnameXPath)]
         private readonly IWebElement surname;
 
-        [FindsBy(How = How.Id, Using = searchButtonXPath)]
+        [FindsBy(How = How.XPath, Using = searchButtonXPath)]
         private readonly IWebElement searchButton;
 
         [FindsBy(How = How.XPath, Using = errorMessageXPath)]

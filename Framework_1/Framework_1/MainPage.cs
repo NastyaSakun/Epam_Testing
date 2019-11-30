@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 
-namespace PageObject
+namespace Framework_1
 {
     public class MainPage
     {
