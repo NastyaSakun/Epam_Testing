@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -12,34 +12,46 @@ namespace PageObject
     {
         private IWebDriver webDriver;
 
-        [Test]
-        [Obsolete]
-        public void BookingWithoutAllParameters()
+        private const string ticketNumberValue = "P52FKC";
+        private const string surnameValue = "Sakun";
+
+        const string errorInBookingWithoutAllParameters = "Select Departure City";
+        const string errorInWorkWithCheckIn = "The information submitted does not match any itinerary. Please verify the information is correct and try again.";
+
+        [SetUp]
+        public void OpenGoogleChrome()
         {
             webDriver = new ChromeDriver();
             webDriver.Navigate().GoToUrl(@"https://book.spicejet.com/");
-            MainPage mainPage = new MainPage(webDriver).ClickSearchButton();
-            MainPage error = new MainPage(webDriver);
-
-            NUnit.Framework.Assert.IsTrue(error.GetErrorMessage());
-
-            webDriver.Quit();
         }
 
         [Test]
-        [Obsolete]
+        public void BookingWithoutAllParameters()
+        {            
+            MainPage mainPage = new MainPage(webDriver).ClickSearchButton();
+            MainPage error = new MainPage(webDriver);
+
+            NUnit.Framework.Assert.AreEqual(errorInBookingWithoutAllParameters, error.GetErrorMessageInMainPage());
+        }
+
+        [Test]
         public void WorkWithCheckIn()
         {
-            webDriver = new ChromeDriver();
-            webDriver.Navigate().GoToUrl(@"https://book.spicejet.com/");
             MainPage mainPage = new MainPage(webDriver).ClickCheckInButton();
 
-            CheckInPage checkIn = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage();
+            CheckInPage checkIn = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(ticketNumberValue, surnameValue);
             checkIn.PressSearchButton();
 
-            NUnit.Framework.Assert.IsTrue(checkIn.GetErrorMessage());
+            CheckInPage error = new CheckInPage(webDriver);
 
+            NUnit.Framework.Assert.AreEqual(errorInWorkWithCheckIn, error.GetErrorMessageInCheckInPage());
+        }
+
+        [TearDown]
+        public void CloseGoogleChrome()
+        {
             webDriver.Quit();
+            webDriver.Dispose();
         }
     }
 }
