@@ -8,12 +8,12 @@ namespace Framework_1
 {
     public class ModelCheckInUser
     {
-        public string TicketNumber { get; }
-        public string Surname { get; }
+        public string TicketNumber { get; set; }
+        public string Surname { get; set; }
         public ModelCheckInUser(string ticketNumber, string surname)
         {
-            Surname = surname;
             TicketNumber = ticketNumber;
+            Surname = surname;
         }
     }
 }

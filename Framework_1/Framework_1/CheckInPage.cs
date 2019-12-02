@@ -34,8 +34,8 @@ namespace Framework_1
 
         public CheckInPage InputPrivateInformationInCheckInPage(ModelCheckInUser user)
         {
-            ticketNumber.SendKeys(user.ticketNumber);
-            surname.SendKeys(user.surname);
+            ticketNumber.SendKeys(user.TicketNumber);
+            surname.SendKeys(user.Surname);
             return this;
         }
 

@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using System;
-
 namespace Framework_1
 {
     [Obsolete]
@@ -21,16 +20,19 @@ namespace Framework_1
         [Test]
         public void WorkWithCheckIn()
         {
-            new MainPage(webDriver).ClickCheckInButton();
+            MakeScreenshotWhenFail(() =>
+            {
+                new MainPage(webDriver).ClickCheckInButton();
 
-            CheckInUserCreator currentUser = new CheckInUserCreator();
+                CheckInUserCreator currentUser = new CheckInUserCreator();
 
-            CheckInPage checkIn = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(currentUser.DataForCheckIn());
-            checkIn.PressSearchButton();
+                CheckInPage checkIn = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(currentUser.DataForCheckIn());
+                checkIn.PressSearchButton();
 
-            CheckInPage error = new CheckInPage(webDriver);
+                CheckInPage error = new CheckInPage(webDriver);
 
-            Assert.AreEqual(errorInWorkWithCheckIn, error.GetErrorMessageInCheckInPage());
+                Assert.AreEqual(errorInWorkWithCheckIn, error.GetErrorMessageInCheckInPage());
+            });
         }
     }
 }
