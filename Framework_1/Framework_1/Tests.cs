@@ -6,13 +6,8 @@ namespace Framework_1
     [Obsolete]
     public class Tests:BaseClass
     {
-        private const string ticketNumberValue = "P52FKC";
-        private const string surnameValue = "Sakun";
-
         const string errorInBookingWithoutAllParameters = "Select Departure City";
-        const string errorInWorkWithCheckIn = "The information submitted does not match any itinerary. Please verify the information is correct and try again.";
-
-        
+        const string errorInWorkWithCheckIn = "The information submitted does not match any itinerary. Please verify the information is correct and try again.";        
 
         [Test]
         public void BookingWithoutAllParameters()
@@ -28,7 +23,9 @@ namespace Framework_1
         {
             new MainPage(webDriver).ClickCheckInButton();
 
-            CheckInPage checkIn = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(ticketNumberValue, surnameValue);
+            CheckInUserCreator currentUser = new CheckInUserCreator();
+
+            CheckInPage checkIn = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(currentUser.DataForCheckIn());
             checkIn.PressSearchButton();
 
             CheckInPage error = new CheckInPage(webDriver);

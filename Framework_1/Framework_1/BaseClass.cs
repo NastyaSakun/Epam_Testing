@@ -1,11 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace Framework_1
 {
@@ -16,15 +14,31 @@ namespace Framework_1
         [SetUp]
         public void OpenGoogleChrome()
         {
-            webDriver = new ChromeDriver();
+            webDriver = Driver.GetDriver();
             webDriver.Navigate().GoToUrl(@"https://book.spicejet.com/");
+        }
+
+        public void MakeScreenshotWhenFail(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch
+            {
+                string screenFolder = AppDomain.CurrentDomain.BaseDirectory + @"\screens";
+                Directory.CreateDirectory(screenFolder);
+                var screen = webDriver.TakeScreenshot();
+                screen.SaveAsFile(screenFolder + @"\screen" + DateTime.Now.ToString("yy-MM-dd_hh-mm-ss") + ".png",
+                    ScreenshotImageFormat.Png);
+                throw;
+            }
         }
 
         [TearDown]
         public void CloseGoogleChrome()
         {
-            webDriver.Quit();
-            webDriver.Dispose();
+            Driver.CloseBrowser();
         }
     }
 }

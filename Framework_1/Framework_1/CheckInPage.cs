@@ -32,10 +32,10 @@ namespace Framework_1
             PageFactory.InitElements(browser, this);
         }
 
-        public CheckInPage InputPrivateInformationInCheckInPage(string ticketNumberValue, string surnameValue)
+        public CheckInPage InputPrivateInformationInCheckInPage(ModelCheckInUser user)
         {
-            ticketNumber.SendKeys(ticketNumberValue);
-            surname.SendKeys(surnameValue);
+            ticketNumber.SendKeys(user.ticketNumber);
+            surname.SendKeys(user.surname);
             return this;
         }
 
