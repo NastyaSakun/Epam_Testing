@@ -17,6 +17,18 @@ namespace Framework_1
         private const string cityFromXPath = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT']";
         private const string cityToXPath = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTXT']";
         private const string bothCitiesMessageXPath = "//*[@id='hide-mobile float-left']";
+        private const string giftCardsXPath = "//*[@id='header-vacations']/a";
+        private const string logoXPath = "//div[@class='picejet_logo']";
+        private const string checkLogoXPath = "//*[@id='ctl00_mainContent_ddl_originStation1_CTXT']";
+
+        [FindsBy(How = How.XPath, Using = logoXPath)]
+        private readonly IWebElement logo;
+
+        [FindsBy(How = How.XPath, Using = checkLogoXPath)]
+        private readonly IWebElement checkLogo;
+
+        [FindsBy(How = How.XPath, Using = giftCardsXPath)]
+        private readonly IWebElement giftCardsPage;
 
         [FindsBy(How = How.XPath, Using = searchButtonXPath)]
         private readonly IWebElement searchButton;
@@ -106,6 +118,23 @@ namespace Framework_1
         {
             flightStatusPage.Click();
             return this;
+        }
+
+        public MainPage ClickGiftCardsPage()
+        {
+            giftCardsPage.Click();
+            return this;
+        }
+
+        public MainPage ClickLogo()
+        {
+            logo.Click();
+            return this;
+        }
+
+        public string CheckLogo()
+        {
+            return checkLogo.Text;
         }
     }
 }

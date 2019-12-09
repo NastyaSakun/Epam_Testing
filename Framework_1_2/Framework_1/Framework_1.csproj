@@ -89,6 +89,7 @@
     <Compile Include="PageConfigs\CheckInUserConfig.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Pages\FlightStatusPage.cs" />
+    <Compile Include="Pages\GifCardsPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
     <Compile Include="PageModels\ModelCheckInUser.cs" />
     <Compile Include="Tests.cs" />

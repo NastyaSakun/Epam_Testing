@@ -14,6 +14,8 @@ namespace Framework_1
         const string bothCitiesMessage = "Kindly fill your GST / UIN details";
         const string errorInFlightStatusWithoutParameters = "Departure City";
         const string errorInFlightStatusWithCityFrom = "Arrival City";
+        const string errorBalance = "*Please enter a valid card number.";
+        const string helpMessage = "Departure City";
 
         readonly CheckInUserCreator currentUser = new CheckInUserCreator();
         readonly FlightStatusCreator currentStatus = new FlightStatusCreator();
@@ -116,6 +118,34 @@ namespace Framework_1
                 FlightStatusPage error = new FlightStatusPage(webDriver);
 
                 Assert.AreEqual(errorInFlightStatusWithCityFrom, error.GetErrorMessageInFlightStatusPageWithCityFrom());
+            });
+        }
+
+        [Test]
+        public void GiftCardsWithoutParameters()
+        {
+            MakeScreenshotWhenFail(() =>
+            {
+                new MainPage(webDriver).ClickGiftCardsPage();
+
+                new GiftCardsPage(webDriver).CheckBalance();
+
+                GiftCardsPage error = new GiftCardsPage(webDriver);
+
+                Assert.AreEqual(errorBalance, error.GetErrorBalance());
+            });
+        }
+
+        [Test]
+        public void CheckLogo()
+        {
+            MakeScreenshotWhenFail(() =>
+            {
+                new MainPage(webDriver).ClickLogo();
+
+                MainPage checking = new MainPage(webDriver);
+
+                Assert.AreEqual(helpMessage, checking.CheckLogo());
             });
         }
     }
