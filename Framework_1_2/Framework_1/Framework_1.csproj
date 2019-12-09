@@ -82,12 +82,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckInPage.cs" />
-    <Compile Include="CheckInUserCreator.cs" />
-    <Compile Include="CheckInUserConfig.cs" />
+    <Compile Include="PageCreators\FlightStatusCreator.cs" />
+    <Compile Include="PageModels\ModelFlightStatus.cs" />
+    <Compile Include="Pages\CheckInPage.cs" />
+    <Compile Include="PageCreators\CheckInUserCreator.cs" />
+    <Compile Include="PageConfigs\CheckInUserConfig.cs" />
     <Compile Include="Driver.cs" />
-    <Compile Include="MainPage.cs" />
-    <Compile Include="ModelCheckInUser.cs" />
+    <Compile Include="Pages\FlightStatusPage.cs" />
+    <Compile Include="Pages\MainPage.cs" />
+    <Compile Include="PageModels\ModelCheckInUser.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="BaseClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

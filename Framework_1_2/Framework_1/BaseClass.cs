@@ -11,7 +11,7 @@ namespace Framework_1
         public IWebDriver webDriver;
 
         [SetUp]
-        public void OpenGoogleChrome()
+        public void OpenBrowser()
         {
             webDriver = Driver.GetDriver();
             webDriver.Navigate().GoToUrl(@"https://book.spicejet.com/");
@@ -34,7 +34,7 @@ namespace Framework_1
         }
 
         [TearDown]
-        public void CloseGoogleChrome()
+        public void CloseBrowser()
         {
             Driver.CloseBrowser();
         }

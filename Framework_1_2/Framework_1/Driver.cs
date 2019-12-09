@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
-using System;
+using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -20,18 +19,16 @@ namespace Framework_1
             {
                 switch (TestContext.Parameters.Get("browser"))
                 {
-                    case "Edge":
-                        new DriverManager().SetUpDriver(new EdgeConfig());
-                        driver = new EdgeDriver();
-                        break;
-
-                    default:
+                    case "Chrome":
                         new DriverManager().SetUpDriver(new ChromeConfig());
                         driver = new ChromeDriver();
                         break;
-                }
 
-                driver.Manage().Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(60));
+                    default:
+                        new DriverManager().SetUpDriver(new FirefoxConfig());
+                        driver = new FirefoxDriver();
+                        break;
+                }
                 driver.Manage().Window.Maximize();
             }
             return driver;
