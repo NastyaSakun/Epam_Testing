@@ -5,7 +5,7 @@ using System;
 
 namespace Framework_1.Pages
 {
-    class FlightStatusPage
+    public class FlightStatusPage
     {
 
         private const string cityFromXPath = "//*[@id='FlifoSearchInputSearchView_originStation']";

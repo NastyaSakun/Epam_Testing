@@ -10,143 +10,143 @@ namespace Framework_1
         const string errorInBookingWithoutAllParameters = "Select Departure City";
         const string errorInWorkWithCheckIn = "The information submitted does not match any itinerary. Please verify the information is correct and try again.";
         const string errorInBookingWithNotExistCity = "No city matches your search.";
-        const string errorInBookingWithAloneCity = "Select Arrival City";
         const string bothCitiesMessage = "Kindly fill your GST / UIN details";
         const string errorInFlightStatusWithoutParameters = "Departure City";
         const string errorInFlightStatusWithCityFrom = "Arrival City";
         const string errorBalance = "*Please enter a valid card number.";
-        const string helpMessage = "Departure City";
+        const string messageSignUp = "Enter one time password (OTP)";
+        const string messageInfant= "If you wish to book a greater number of Infants than Adults, please contact our reservation center for possible arrangements";
 
         readonly CheckInUserCreator currentUser = new CheckInUserCreator();
         readonly FlightStatusCreator currentStatus = new FlightStatusCreator();
+        readonly SignUpCreator registrationUser = new SignUpCreator();
 
         [Test]
+        //1
         public void BookingWithoutAllParameters()
         {
             MakeScreenshotWhenFail(()=>
             {
                 new MainPage(webDriver).ClickSearchButton();
-                MainPage error = new MainPage(webDriver);
-
-                Assert.AreEqual(errorInBookingWithoutAllParameters, error.GetErrorMessageInMainPage());
+                MainPage mainPage = new MainPage(webDriver);
+                Assert.AreEqual(errorInBookingWithoutAllParameters, mainPage.GetErrorMessageInMainPage());
             });
         }
 
         [Test]
+        //2
         public void BookingWithNotExistCity()
         {
             MakeScreenshotWhenFail(() =>
             {
-                MainPage inputCity=new MainPage(webDriver).InputCity(currentUser.DataForBookingWithNotExistCity());
-                inputCity.ClickSearchButton();
-
-                MainPage error = new MainPage(webDriver);
-
-                Assert.AreEqual(errorInBookingWithNotExistCity, error.GetErrorMessageInNotExistCityBox());
+                MainPage mainPage=new MainPage(webDriver).InputCity(currentUser.DataForBookingWithNotExistCity());
+                mainPage.ClickSearchButton();
+                Assert.AreEqual(errorInBookingWithNotExistCity, mainPage.GetErrorMessageInNotExistCityBox());
             });
         }
 
         [Test]
+        //3
         public void BookingWithRightParameters()
         {
             MakeScreenshotWhenFail(() =>
             {
-                MainPage inputCity = new MainPage(webDriver).InputCity(currentUser.DataForBookingWithBothCities());
-                inputCity.ClickSearchButton();
-
-                MainPage message = new MainPage(webDriver);
-
-                Assert.AreEqual(bothCitiesMessage, message.GetMessageInBothCitiesBox());
+                MainPage mainPage = new MainPage(webDriver).InputCity(currentUser.DataForBookingWithBothCities());
+                mainPage.ClickSearchButton();
+                Assert.AreEqual(bothCitiesMessage, mainPage.GetMessageInBothCitiesBox());
             });
         }
 
         [Test]
-        public void BookingWithAloneCity()
-        {
-            MakeScreenshotWhenFail(() =>
-            {
-                MainPage inputCity = new MainPage(webDriver).InputCity(currentUser.DataForBookingWithAloneCity());
-                inputCity.ClickSearchButton();
-
-                MainPage error = new MainPage(webDriver);
-
-                Assert.AreEqual(errorInBookingWithAloneCity, error.GetErrorMessageInAloneCityBox());
-            });
-        }
-
-        [Test]
+        //4
         public void WorkWithCheckIn()
         {
             MakeScreenshotWhenFail(() =>
             {
-                new MainPage(webDriver).ClickCheckInButton(webDriver);                
-
-                CheckInPage checkIn = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(currentUser.DataForCheckIn());
-                checkIn.PressSearchButton();
-
-                CheckInPage error = new CheckInPage(webDriver);
-
-                Assert.AreEqual(errorInWorkWithCheckIn, error.GetErrorMessageInCheckInPage());
+                new MainPage(webDriver).ClickCheckInButton(webDriver);    
+                CheckInPage checkInPage = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(currentUser.DataForCheckIn());
+                checkInPage.PressSearchButton();
+                Assert.AreEqual(errorInWorkWithCheckIn, checkInPage.GetErrorMessageInCheckInPage());
             });
         }
 
         [Test]
+        //5
         public void WorkWithFlightStatusWithoutAllParameters()
         {
             MakeScreenshotWhenFail(() =>
             {
                 new MainPage(webDriver).ClickFlightStatus();
                 new FlightStatusPage(webDriver).ClickSearchWithoutAllParameters();
-
-                FlightStatusPage error = new FlightStatusPage(webDriver);
-
-                Assert.AreEqual(errorInFlightStatusWithoutParameters, error.GetErrorMessageInFlightStatusPage());
+                FlightStatusPage flightStatusPage = new FlightStatusPage(webDriver);
+                Assert.AreEqual(errorInFlightStatusWithoutParameters, flightStatusPage.GetErrorMessageInFlightStatusPage());
             });
         }
 
         [Test]
+        //6
         public void FlightStatusWithAloneCity()
         {
             MakeScreenshotWhenFail(() =>
             {
-                MainPage inputCity = new MainPage(webDriver).InputCity(currentUser.DataForBookingWithAloneCity());
-                inputCity.ClickSearchButton();
-
+                MainPage mainPage = new MainPage(webDriver).InputCity(currentUser.DataForBookingWithAloneCity());
+                mainPage.ClickSearchButton();
                 FlightStatusPage flightStatusPage = new FlightStatusPage(webDriver).InputCityFromInFlightStatusPage(currentStatus.DataForFlighStatus());
                 flightStatusPage.ClickSearchWithoutAllParameters();
-
-                FlightStatusPage error = new FlightStatusPage(webDriver);
-
-                Assert.AreEqual(errorInFlightStatusWithCityFrom, error.GetErrorMessageInFlightStatusPageWithCityFrom());
+                Assert.AreEqual(errorInFlightStatusWithCityFrom, flightStatusPage.GetErrorMessageInFlightStatusPageWithCityFrom());
             });
         }
 
         [Test]
+        //7
         public void GiftCardsWithoutParameters()
         {
             MakeScreenshotWhenFail(() =>
             {
                 new MainPage(webDriver).ClickGiftCardsPage();
-
                 new GiftCardsPage(webDriver).CheckBalance();
-
-                GiftCardsPage error = new GiftCardsPage(webDriver);
-
-                Assert.AreEqual(errorBalance, error.GetErrorBalance());
+                GiftCardsPage giftCardsPage = new GiftCardsPage(webDriver);
+                Assert.AreEqual(errorBalance, giftCardsPage.GetErrorBalance());
             });
         }
 
         [Test]
-        public void CheckLogo()
+        //8
+        public void InputPastDate()
         {
             MakeScreenshotWhenFail(() =>
             {
-                new MainPage(webDriver).ClickLogo();
-
-                MainPage checking = new MainPage(webDriver);
-
-                Assert.AreEqual(helpMessage, checking.CheckLogo());
+                MainPage mainPage = new MainPage(webDriver);
+                Assert.IsTrue(mainPage.GetDate());
             });
         }
+
+        [Test]
+        //9
+        public void SignIn()
+        {
+            MakeScreenshotWhenFail(() =>
+            {
+                new MainPage(webDriver).GoToLogPage();
+                LogPage logPage = new LogPage(webDriver);
+                logPage.GoSignUp();
+                logPage.InputData(registrationUser.DataForRegistration());
+                logPage.SubmitSignUp();
+                Assert.IsTrue(logPage.GetMessage().Contains(messageSignUp));
+            });
+        }
+
+        [Test]
+        //10
+        public void SetOneAdultFourInfant()
+        {
+            MakeScreenshotWhenFail(() =>
+            {
+                MainPage mainPage = new MainPage(webDriver).InputBothCities(currentUser.DataForBookingWithBothCities());
+                mainPage.SetInfant();
+                Assert.AreEqual(messageInfant, mainPage.GetInfantMessage());
+            });
+        }
+
     }
 }

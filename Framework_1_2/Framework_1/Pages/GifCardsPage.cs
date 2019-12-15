@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Framework_1.Pages
 {
-    class GiftCardsPage
+    public class GiftCardsPage
     {
         private const string currentGiftCardXPath = "//*[@class='ng-binding']";
         private const string checkBalanceXPath = "//input[id='idchkBalance']";

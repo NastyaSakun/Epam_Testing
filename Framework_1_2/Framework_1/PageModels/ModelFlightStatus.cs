@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Framework_1.PageModels
 {
-    class ModelFlightStatus
+    public class ModelFlightStatus
     {
         public string CitytFrom { get; set; }
         public ModelFlightStatus(string cityFrom)

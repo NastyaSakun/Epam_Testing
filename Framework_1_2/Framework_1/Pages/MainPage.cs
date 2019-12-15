@@ -10,7 +10,6 @@ namespace Framework_1
         private const string searchButtonXPath = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_ButtonSubmit']";
         private const string errorMessageXPath = "//div[@id='view-origin-station']";
         private const string errorMessageNotExistCityXPath = "//div[@class='heading']";
-        private const string errorMessageAloneCityXPath = "//div[@id='view-destination-station']";
         private const string checkInButtonXPath = "//* [@class = 'spiceFare']";
         private const string flightStatusXPath = "//*[@class='flight_status']";
         private const string helpXPath = "//* [@class='flight_status']";
@@ -18,14 +17,30 @@ namespace Framework_1
         private const string cityToXPath = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTXT']";
         private const string bothCitiesMessageXPath = "//*[@id='hide-mobile float-left']";
         private const string giftCardsXPath = "//*[@id='header-vacations']/a";
-        private const string logoXPath = "//div[@class='picejet_logo']";
-        private const string checkLogoXPath = "//*[@id='ctl00_mainContent_ddl_originStation1_CTXT']";
+        private const string buttonForCalendarXPath= "//*[@class=' ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled']";
+        private const string dateXPath = "//*[@class='ui-state-default']";
+        private const string logXPath = "//*[@id='Login']";
+        private const string peopleBoxXPath = "//div[@id='divpaxinfo']";
+        private const string infantXPat = "//select[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_DropDownListPassengerType_INFANT']";
+        private const string messageInfantXPath = "//*[@class='wMed1s required guests']";
 
-        [FindsBy(How = How.XPath, Using = logoXPath)]
-        private readonly IWebElement logo;
+        [FindsBy(How = How.XPath, Using = peopleBoxXPath)]
+        private readonly IWebElement people;
 
-        [FindsBy(How = How.XPath, Using = checkLogoXPath)]
-        private readonly IWebElement checkLogo;
+        [FindsBy(How = How.XPath, Using = messageInfantXPath)]
+        private readonly IWebElement messageInfant;
+
+        [FindsBy(How = How.XPath, Using = infantXPat)]
+        private readonly IWebElement infant;
+
+        [FindsBy(How = How.XPath, Using = logXPath)]
+        private readonly IWebElement logPage;
+
+        [FindsBy(How = How.XPath, Using = buttonForCalendarXPath)]
+        private readonly IWebElement buttonForCalendar;
+
+        [FindsBy(How = How.XPath, Using = dateXPath)]
+        private readonly IWebElement date;
 
         [FindsBy(How = How.XPath, Using = giftCardsXPath)]
         private readonly IWebElement giftCardsPage;
@@ -54,9 +69,6 @@ namespace Framework_1
         [FindsBy(How = How.XPath, Using = bothCitiesMessageXPath)]
         private readonly IWebElement bothCitiesMessage;
 
-        [FindsBy(How = How.XPath, Using = errorMessageAloneCityXPath)]
-        private readonly IWebElement aloneCityError;
-
         [FindsBy(How = How.XPath, Using = flightStatusXPath)]
         private readonly IWebElement flightStatusPage;
 
@@ -64,6 +76,30 @@ namespace Framework_1
         public MainPage(IWebDriver browser)
         {
             PageFactory.InitElements(browser, this);
+        }
+
+        public MainPage SetInfant()
+        {
+            people.Click();
+            infant.SendKeys("4");
+            return this;
+        }
+
+        public string GetInfantMessage()
+        {
+            return messageInfant.Text;
+        }
+
+        public bool GetDate()
+        {
+            buttonForCalendar.Click();
+            return date.ToString().Contains("dis");
+        }
+
+        public MainPage GoToLogPage()
+        {
+            logPage.Click();
+            return this;
         }
 
         public MainPage ClickSearchButton()
@@ -95,11 +131,6 @@ namespace Framework_1
             return bothCitiesMessage.Text;
         }
 
-        public string GetErrorMessageInAloneCityBox()
-        {
-            return aloneCityError.Text;
-        }
-
         public string GetErrorMessageInNotExistCityBox()
         {
             return notExistCityError.Text;
@@ -126,15 +157,5 @@ namespace Framework_1
             return this;
         }
 
-        public MainPage ClickLogo()
-        {
-            logo.Click();
-            return this;
-        }
-
-        public string CheckLogo()
-        {
-            return checkLogo.Text;
-        }
     }
 }

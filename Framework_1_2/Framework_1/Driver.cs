@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace Framework_1
 {
-    class Driver
+    public class Driver
     {
         private static IWebDriver driver;
 

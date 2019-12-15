@@ -4,7 +4,7 @@ using Configuration = System.Configuration.Configuration;
 
 namespace Framework_1
 {
-    class CheckInUserConfig
+    public class CheckInUserConfig
     {
         static Configuration ConfigFile
         {

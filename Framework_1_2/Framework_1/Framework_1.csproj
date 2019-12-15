@@ -83,13 +83,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageCreators\FlightStatusCreator.cs" />
+    <Compile Include="PageCreators\SignUpCreator.cs" />
     <Compile Include="PageModels\ModelFlightStatus.cs" />
+    <Compile Include="PageModels\ModelSignUp.cs" />
     <Compile Include="Pages\CheckInPage.cs" />
     <Compile Include="PageCreators\CheckInUserCreator.cs" />
     <Compile Include="PageConfigs\CheckInUserConfig.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Pages\FlightStatusPage.cs" />
     <Compile Include="Pages\GifCardsPage.cs" />
+    <Compile Include="Pages\LogPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
     <Compile Include="PageModels\ModelCheckInUser.cs" />
     <Compile Include="Tests.cs" />
