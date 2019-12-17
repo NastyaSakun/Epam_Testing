@@ -96,7 +96,7 @@
     <Compile Include="Pages\MainPage.cs" />
     <Compile Include="PageModels\ModelCheckInUser.cs" />
     <Compile Include="Tests.cs" />
-    <Compile Include="BaseClass.cs" />
+    <Compile Include="TestConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

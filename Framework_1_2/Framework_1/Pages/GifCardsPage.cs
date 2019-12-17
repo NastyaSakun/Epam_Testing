@@ -10,9 +10,9 @@ namespace Framework_1.Pages
 {
     public class GiftCardsPage
     {
-        private const string currentGiftCardXPath = "//*[@class='ng-binding']";
+        private const string currentGiftCardXPath = "//input[@class='ng-binding']";
         private const string checkBalanceXPath = "//input[id='idchkBalance']";
-        private const string errorBalanceXPath = "//*[@id='numbervalidation']";
+        private const string errorBalanceXPath = "//div[@id='numbervalidation']";
 
         [FindsBy(How = How.XPath, Using = checkBalanceXPath)]
         private readonly IWebElement checkBalance;

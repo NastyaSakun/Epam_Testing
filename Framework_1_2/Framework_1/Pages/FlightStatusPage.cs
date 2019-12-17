@@ -10,7 +10,7 @@ namespace Framework_1.Pages
 
         private const string cityFromXPath = "//*[@id='FlifoSearchInputSearchView_originStation']";
 
-        private const string searchButtonXPath = "//*[@id='FlifoSearchInputSearchView_ButtonSubmit']";
+        private const string searchButtonXPath = "//input[@id='FlifoSearchInputSearchView_ButtonSubmit']";
 
         private const string errorMessageXPath = "//div[@id='FlifoSearchInputSearchView_originStation']";
 

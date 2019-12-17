@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Framework_1
 {
-    public class BaseClass
+    public class TestConfig
     {
         public IWebDriver webDriver;
 

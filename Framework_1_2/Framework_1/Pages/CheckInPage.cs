@@ -6,11 +6,11 @@ namespace Framework_1
 {
     public class CheckInPage
     {
-        private const string ticketNumberXPath = "//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ConfirmationNumber']";
+        private const string ticketNumberXPath = "//input[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ConfirmationNumber']";
 
-        private const string surnameXPath = "//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_CONTACTEMAIL1']";        
+        private const string surnameXPath = "//input[@id='BookingRetrieveInputSearch1WebCheckinSearchView_CONTACTEMAIL1']";        
 
-        private const string searchButtonXPath = "//*[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ButtonRetrieve']";
+        private const string searchButtonXPath = "//input[@id='BookingRetrieveInputSearch1WebCheckinSearchView_ButtonRetrieve']";
 
         private const string errorMessageXPath = "//div[@id='errorSectionContent']";
 

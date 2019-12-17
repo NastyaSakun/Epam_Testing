@@ -7,9 +7,9 @@ namespace Framework_1.Pages
 {
     public class LogPage
     {
-        private const string signUpXPath = "//*[@class='signup-link buttonN']";
+        private const string signUpXPath = "//input[@class='signup-link buttonN']";
         private const string titleBoxXPath = "//select[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_DropDownListTitle']";
-        private const string titleXPath = "//*[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_DropDownListTitle']/option[3]";
+        private const string titleXPath = "//option[3][@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_DropDownListTitle']";
         private const string nameBoxXPath = "//input[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_TextBoxFirstName']";
         private const string surnameBoxXPath = "//input[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_TextBoxLastName']";
         private const string passwordBoxXPath = "//input[@id='CONTROLGROUPREGISTERVIEW_MemberInputRegisterView_PasswordFieldAgentPassword']";
@@ -19,12 +19,12 @@ namespace Framework_1.Pages
         private const string numberBelarusXPath = "//span[@class='country-name']";
         private const string numberXPath = "//input[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_TEXTBOXINTLMOBILENUMBER']";
         private const string dateBoxXPath = "//input[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_TEXTBOXINPUTDOB']";
-        private const string yearXPath = "//*[@id='datepicker_910']/div/table/tbody/tr/td/table/tbody[3]/tr[1]/td[1]/a/span"; //!
-        private const string monthXPath = "//*[@id='datepicker_910']/div/table/tbody/tr/td/table/tbody[1]/tr[1]/td[1]/a"; //!
-        private const string dayXPath = "//*[@id='datepicker_910']/div/table/tbody/tr/td/table/tbody[2]/tr[1]/td[7]/a/span";
+        private const string yearXPath = "//span[@id='datepicker_910']";
+        private const string monthXPath = "//a[@id='datepicker_910']";
+        private const string dayXPath = "//span[@id='datepicker_910']";
         private const string confirmXPath = "//input[@id='chkSpiceClubTnC']";
         private const string submitXPath = "//input[@id='CONTROLGROUPREGISTERVIEW_ButtonSubmit']";
-        private const string messageXPath = "//*[@id='SpiceMoneyOT']";
+        private const string messageXPath = "//div[@id='SpiceMoneyOT']";
 
         [FindsBy(How = How.XPath, Using = signUpXPath)]
         private readonly IWebElement signUp;

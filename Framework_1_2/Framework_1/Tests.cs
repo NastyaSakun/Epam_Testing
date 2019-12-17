@@ -5,7 +5,7 @@ using System;
 namespace Framework_1
 {
     [Obsolete]
-    public class Tests:BaseClass
+    public class Tests:TestConfig
     {
         const string errorInBookingWithoutAllParameters = "Select Departure City";
         const string errorInWorkWithCheckIn = "The information submitted does not match any itinerary. Please verify the information is correct and try again.";

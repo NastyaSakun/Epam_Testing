@@ -7,22 +7,22 @@ namespace Framework_1
 {
     public class MainPage
     {
-        private const string searchButtonXPath = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_ButtonSubmit']";
+        private const string searchButtonXPath = "//input[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_ButtonSubmit']";
         private const string errorMessageXPath = "//div[@id='view-origin-station']";
         private const string errorMessageNotExistCityXPath = "//div[@class='heading']";
-        private const string checkInButtonXPath = "//* [@class = 'spiceFare']";
-        private const string flightStatusXPath = "//*[@class='flight_status']";
-        private const string helpXPath = "//* [@class='flight_status']";
-        private const string cityFromXPath = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT']";
-        private const string cityToXPath = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTXT']";
-        private const string bothCitiesMessageXPath = "//*[@id='hide-mobile float-left']";
-        private const string giftCardsXPath = "//*[@id='header-vacations']/a";
-        private const string buttonForCalendarXPath= "//*[@class=' ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled']";
-        private const string dateXPath = "//*[@class='ui-state-default']";
-        private const string logXPath = "//*[@id='Login']";
+        private const string checkInButtonXPath = "//a[@class = 'spiceFare']";
+        private const string flightStatusXPath = "//span[@class='flight_status']";
+        private const string helpXPath = "//span[@class='flight_status']";
+        private const string cityFromXPath = "//input[@id='ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT']";
+        private const string cityToXPath = "//input[@id='ControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTXT']";
+        private const string bothCitiesMessageXPath = "//div[@id='hide-mobile float-left']";
+        private const string giftCardsXPath = "//span[@id='header-vacations']/a";
+        private const string buttonForCalendarXPath= "//input[@class=' ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled']";
+        private const string dateXPath = "//input[@class='ui-state-default']";
+        private const string logXPath = "//input[@id='Login']";
         private const string peopleBoxXPath = "//div[@id='divpaxinfo']";
         private const string infantXPat = "//select[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_DropDownListPassengerType_INFANT']";
-        private const string messageInfantXPath = "//*[@class='wMed1s required guests']";
+        private const string messageInfantXPath = "//div[@class='wMed1s required guests']";
 
         [FindsBy(How = How.XPath, Using = peopleBoxXPath)]
         private readonly IWebElement people;
