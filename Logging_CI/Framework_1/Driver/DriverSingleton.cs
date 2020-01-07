@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using System;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -30,6 +31,7 @@ namespace Framework_1
                         break;
                 }
                 driver.Manage().Window.Maximize();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             }
             return driver;
         }

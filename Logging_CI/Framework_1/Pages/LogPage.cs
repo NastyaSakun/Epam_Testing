@@ -7,7 +7,7 @@ namespace Framework_1.Pages
 {
     public class LogPage
     {
-        private const string signUpXPath = "//input[@class='signup-link buttonN']";
+        private const string signUpXPath = "//a[@class='signup-link buttonN']";
         private const string titleBoxXPath = "//select[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_DropDownListTitle']";
         private const string titleXPath = "//option[3][@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_DropDownListTitle']";
         private const string nameBoxXPath = "//input[@id='CONTROLGROUPREGISTERVIEW_PersonInputRegisterView_TextBoxFirstName']";
@@ -94,22 +94,11 @@ namespace Framework_1.Pages
 
         public LogPage InputData(ModelSignUp user)
         {
-            titleBox.Click();
-            title.Click();
-            name.SendKeys(user.Name);
-            surname.SendKeys(user.Surname);
-            nRegion.Click();
-            nBel.Click();
-            number.SendKeys(user.Number);
-            password.SendKeys(user.Password);
-            rPassword.SendKeys(user.RPassword);
-            mail.SendKeys(user.Mail);
-            dateBox.Click();
-            year.Click();
-            month.Click();
-            day.Click();
-            confirm.Click();
             return this;
+        }
+        public bool IsDisplaySignUp()
+        {
+            return titleBox.Displayed;
         }
 
         public LogPage SubmitSignUp()

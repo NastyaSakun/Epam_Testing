@@ -42,7 +42,7 @@ namespace Framework_1.Pages
 
         public FlightStatusPage InputCityFromInFlightStatusPage(ModelFlightStatus user)
         {
-            cityFrom .SendKeys(user.CitytFrom);
+            cityFrom.SendKeys(user.CitytFrom);
             return this;
         }
 

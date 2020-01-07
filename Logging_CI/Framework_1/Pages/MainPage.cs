@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
+using System.Collections.Generic;
 
 namespace Framework_1
 {
@@ -16,12 +17,12 @@ namespace Framework_1
         private const string cityFromXPath = "//input[@id='ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT']";
         private const string cityToXPath = "//input[@id='ControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTXT']";
         private const string bothCitiesMessageXPath = "//*[@class='hide-mobile float-left']";
-        private const string giftCardsXPath = "//span[@id='header-vacations']/a";
-        private const string buttonForCalendarXPath= "//input[@class=' ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled']";
-        private const string dateXPath = "//input[@class='ui-state-default']";
-        private const string logXPath = "//input[@id='Login']";
+        private const string giftCardsXPath = "//*[@id='gift-card']";
+        private const string buttonForCalendarXPath= "//*[@class='custom_date_pic required home-date-input']";
+        private const string dateXPath = "//td[@class=' ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled ']";
+        private const string logXPath = "//a[@id='Login']";
         private const string peopleBoxXPath = "//div[@id='divpaxinfo']";
-        private const string infantXPat = "//select[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_DropDownListPassengerType_INFANT']";
+        private const string infantXPat = "//*[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_DropDownListPassengerType_INFANT']";
         private const string messageInfantXPath = "//div[@class='wMed1s required guests']";
 
         [FindsBy(How = How.XPath, Using = peopleBoxXPath)]
@@ -72,6 +73,12 @@ namespace Framework_1
         [FindsBy(How = How.XPath, Using = flightStatusXPath)]
         private readonly IWebElement flightStatusPage;
 
+        [FindsBy(How = How.XPath, Using = "//div[@id='view-destination-station']")]
+        public IWebElement EmpthyCityError;
+
+        [FindsBy(How = How.XPath, Using = "//div[@aria-label='Increase']")]
+        public IList<IWebElement> AddPassenger;
+
         [Obsolete] //For PageFactory
         public MainPage(IWebDriver browser)
         {
@@ -85,15 +92,17 @@ namespace Framework_1
             return this;
         }
 
-        public string GetInfantMessage()
+        public string GetInfantMessage(IWebDriver driver)
         {
-            return messageInfant.Text;
+            IAlert alert = driver.SwitchTo().Alert();
+            return alert.Text;
         }
-
+       
         public bool GetDate()
         {
             buttonForCalendar.Click();
-            return date.ToString().Contains("dis");
+            date.Click();
+            return date.GetAttribute("class").ToString().Contains("dis");
         }
 
         public MainPage GoToLogPage()
@@ -114,10 +123,14 @@ namespace Framework_1
             return this;
         }
 
-        public MainPage InputBothCities(ModelCheckInUser user)
+        public MainPage InputBothCities(ModelCheckInUser user, IWebDriver driver)
         {
             notExistCityBox.SendKeys(user.AloneCity);
             bothCitiesBox.SendKeys(user.CityTo);
+            Actions action = new Actions(driver);
+            action.MoveToElement(notExistCityBox);
+            action.Perform();
+            notExistCityBox.Click();
             return this;
         }
 
