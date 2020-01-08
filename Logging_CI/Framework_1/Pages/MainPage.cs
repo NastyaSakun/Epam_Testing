@@ -10,7 +10,7 @@ namespace Framework_1
     {
         private const string searchButtonXPath = "//input[@id='ControlGroupSearchView_AvailabilitySearchInputSearchView_ButtonSubmit']";
         private const string errorMessageXPath = "//div[@id='view-origin-station']";
-        private const string errorMessageNotExistCityXPath = "//div[@class='heading']";
+        private const string errorMessageNotExistCityXPath = "//div[@id='view-destination-station']";
         private const string checkInButtonXPath = "//a[@class = 'spiceFare']";
         private const string flightStatusXPath = "//*[@class='flight_status']";
         private const string helpXPath = "//*[@class='flight_status']";
@@ -67,7 +67,7 @@ namespace Framework_1
         [FindsBy(How = How.XPath, Using = errorMessageNotExistCityXPath)]
         private readonly IWebElement notExistCityError;
 
-        [FindsBy(How = How.XPath, Using = bothCitiesMessageXPath)]
+        [FindsBy(How = How.XPath, Using = errorMessageNotExistCityXPath)]
         private readonly IWebElement bothCitiesMessage;
 
         [FindsBy(How = How.XPath, Using = flightStatusXPath)]

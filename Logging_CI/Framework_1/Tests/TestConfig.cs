@@ -13,7 +13,7 @@ namespace Framework_1
         [SetUp]
         public void OpenBrowser()
         {
-            webDriver = Driver.GetDriver();
+            webDriver = DriverSingleton.GetDriver();
             webDriver.Navigate().GoToUrl(@"https://book.spicejet.com/");
         }
 
@@ -36,7 +36,7 @@ namespace Framework_1
         [TearDown]
         public void CloseBrowser()
         {
-            Driver.CloseBrowser();
+            DriverSingleton.CloseBrowser();
         }
     }
 }

@@ -12,8 +12,8 @@ namespace Framework_1
     {
         const string errorInBookingWithoutAllParameters = "Select Departure City";
         const string errorInWorkWithCheckIn = "The information submitted does not match any itinerary. Please verify the information is correct and try again.";
-        const string errorInBookingWithNotExistCity = "No city matches your search.";
-        const string bothCitiesMessage = "Kindly fill your GST / UIN details";
+        const string errorInBookingWithNotExistCity = "Select Arrival City";
+        const string bothCitiesMessage = "Kindly fill your GST / UIN details Select Arrival City";
         const string errorInFlightStatusWithoutParameters = "Departure City";
         const string errorInFlightStatusWithCityFrom = "Select Arrival City";
         const string errorBalance = "*Please enter a valid card number.";
@@ -56,7 +56,7 @@ namespace Framework_1
             {
                 MainPage mainPage = new MainPage(webDriver).InputBothCities(currentUser.DataForBookingWithBothCities(), webDriver);
                 mainPage.ClickSearchButton();
-                Assert.IsTrue( mainPage.GetMessageInBothCitiesBox().Contains(bothCitiesMessage));
+                Assert.IsTrue(bothCitiesMessage.Contains(mainPage.GetMessageInBothCitiesBox()));
             });
         }
 
@@ -87,7 +87,7 @@ namespace Framework_1
         }
 
         [Test]
-        //6 -!!!
+        //6
         public void FlightStatusWithAloneCity()
         {
             MakeScreenshotWhenFail(() =>

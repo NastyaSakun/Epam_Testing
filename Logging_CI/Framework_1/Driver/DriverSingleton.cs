@@ -8,11 +8,11 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace Framework_1
 {
-    public class Driver
+    public class DriverSingleton
     {
         private static IWebDriver driver;
 
-        private Driver() { }
+        private DriverSingleton() { }
 
         public static IWebDriver GetDriver()
         {
