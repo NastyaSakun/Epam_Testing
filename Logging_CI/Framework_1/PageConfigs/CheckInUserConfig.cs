@@ -15,7 +15,7 @@ namespace Framework_1
                 var configeMap = new ExeConfigurationFileMap
                 {
                     ExeConfigFilename = AppDomain.CurrentDomain.BaseDirectory.Substring(0, index) +
-                    $@"{file}.config"
+                    @"{file}.config"
                 };
                 return ConfigurationManager.OpenMappedExeConfiguration(configeMap, ConfigurationUserLevel.None);
             }
