@@ -15,6 +15,8 @@ namespace Framework_1
         {
             webDriver = DriverSingleton.GetDriver();
             webDriver.Navigate().GoToUrl(@"https://book.spicejet.com/");
+            Logger.InitLogger();
+            Logger.Log.Info("Browser initialized");
         }
 
         public void MakeScreenshotWhenFail(Action action)

@@ -30,9 +30,11 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(()=>
             {
+                Logger.InitLogger();
                 new MainPage(webDriver).ClickSearchButton();
                 MainPage mainPage = new MainPage(webDriver);
                 Assert.AreEqual(errorInBookingWithoutAllParameters, mainPage.GetErrorMessageInMainPage());
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -42,9 +44,11 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 MainPage mainPage=new MainPage(webDriver).InputCity(currentUser.DataForBookingWithNotExistCity());
                 mainPage.ClickSearchButton();
                 Assert.AreEqual(errorInBookingWithNotExistCity, mainPage.GetErrorMessageInNotExistCityBox());
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -54,9 +58,11 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 MainPage mainPage = new MainPage(webDriver).InputBothCities(currentUser.DataForBookingWithBothCities(), webDriver);
                 mainPage.ClickSearchButton();
                 Assert.IsTrue(bothCitiesMessage.Contains(mainPage.GetMessageInBothCitiesBox()));
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -66,10 +72,12 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 new MainPage(webDriver).ClickCheckInButton(webDriver);    
                 CheckInPage checkInPage = new CheckInPage(webDriver).InputPrivateInformationInCheckInPage(currentUser.DataForCheckIn());
                 checkInPage.PressSearchButton();
                 Assert.AreEqual(errorInWorkWithCheckIn, checkInPage.GetErrorMessageInCheckInPage());
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -79,10 +87,12 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 new MainPage(webDriver).ClickFlightStatus();
                 new FlightStatusPage(webDriver).ClickSearchWithoutAllParameters();
                 FlightStatusPage flightStatusPage = new FlightStatusPage(webDriver);
                 Assert.IsTrue(flightStatusPage.GetErrorMessageInFlightStatusPage().Contains(errorInFlightStatusWithoutParameters));
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -92,11 +102,13 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 MainPage mainPage = new MainPage(webDriver).InputCity(currentUser.DataForBookingWithAloneCity());
                 mainPage.ClickSearchButton();
                 //FlightStatusPage flightStatusPage = new FlightStatusPage(webDriver).InputCityFromInFlightStatusPage(currentStatus.DataForFlighStatus());
                 //flightStatusPage.ClickSearchWithoutAllParameters();
                 Assert.AreEqual(errorInFlightStatusWithCityFrom, mainPage.EmpthyCityError.Text);
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -106,10 +118,12 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 new MainPage(webDriver).ClickGiftCardsPage();
                 webDriver.SwitchTo().Window(webDriver.WindowHandles.Last());
                 GiftCardsPage giftCardsPage = new GiftCardsPage(webDriver).CheckBalance(); ;
                 Assert.AreEqual(errorBalance, giftCardsPage.GetErrorBalance());
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -119,8 +133,10 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 MainPage mainPage = new MainPage(webDriver);
                 Assert.IsTrue(mainPage.GetDate());
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -130,10 +146,12 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 new MainPage(webDriver).GoToLogPage();
                 LogPage logPage = new LogPage(webDriver);
                 logPage.GoSignUp();
                 Assert.IsTrue(logPage.IsDisplaySignUp());
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
@@ -143,9 +161,11 @@ namespace Framework_1
         {
             MakeScreenshotWhenFail(() =>
             {
+                Logger.InitLogger();
                 MainPage mainPage = new MainPage(webDriver).InputBothCities(currentUser.DataForBookingWithBothCities(), webDriver);
                 mainPage.SetInfant();
                 Assert.AreEqual(messageInfant, mainPage.GetInfantMessage(webDriver));
+                Logger.Log.Info("Test complete successfully");
             });
         }
 
